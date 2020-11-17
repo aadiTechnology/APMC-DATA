@@ -30,26 +30,12 @@ namespace MyProject.WebAPI.Controllers
         private readonly IMapper _mapper;
 
         // GET: api/<DataController>
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    //Testing Logging
-
-        //    //_logger.LogInfo("Here is info message from the controller.");
-        //    //_logger.LogDebug("Here is debug message from the controller.");
-        //    //_logger.LogWarn("Here is warn message from the controller.");
-        //    //_logger.LogError("Here is error message from the controller.");
-
-        //    //Testing Global Exceptions
-        //    //_logger.LogInfo("Fetching all the Emlployees from the storage");           
-        //    //throw new Exception("Exception while fetching all the students from the storage.");           
-
-        //    //Getting Data
-        //    var employees= RepositoryWrapper.Employee.FindAll();
-        //    return Ok(employees);
-        //    //return RepositoryWrapper.Employee.FindByCondition(x => x.Id.Equals(2));            
-
-        //}
+        [HttpGet]
+        public List<string> Get()
+        {
+            //Getting Data
+            return new List<string>() { "value1", "value2" }; 
+        }
         [HttpGet("GetEmployees")]
         public IActionResult GetEmployees([FromQuery] EmployeeParameters employeeParameters)
         {
