@@ -33,7 +33,7 @@ namespace MyProject.WebAPI.Controllers
         [HttpGet]
         public List<string> Get()
         {
-            //Getting Data
+            //Getting Data for Testing
             return new List<string>() { "value1", "value2" }; 
         }
         [HttpGet("GetEmployees")]
