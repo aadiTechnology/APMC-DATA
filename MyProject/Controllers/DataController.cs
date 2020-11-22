@@ -34,7 +34,7 @@ namespace MyProject.WebAPI.Controllers
         public List<string> Get()
         {
             //Getting Data for Testing
-            return new List<string>() { "value1", "value2" }; 
+            return new List<string>() { "value1", "value2", "value3" }; 
         }
         [HttpGet("GetEmployees")]
         public IActionResult GetEmployees([FromQuery] EmployeeParameters employeeParameters)
