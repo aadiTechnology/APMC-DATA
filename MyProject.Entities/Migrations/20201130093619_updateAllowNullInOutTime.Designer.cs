@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyProject.Entities;
 
 namespace MyProject.Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20201130093619_updateAllowNullInOutTime")]
+    partial class updateAllowNullInOutTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,16 +229,10 @@ namespace MyProject.Entities.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("EntryFee")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ExtraTime")
+                    b.Property<int>("ChargesTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ExtraTimeFee")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FineCharges")
+                    b.Property<string>("EntryFee")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("InTime")
@@ -245,16 +241,7 @@ namespace MyProject.Entities.Migrations
                     b.Property<string>("IndentId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NoParkingFee")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("OutTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UpdatedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("VehicleNumber")
@@ -406,18 +393,6 @@ namespace MyProject.Entities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EntryFee")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ExtraTime")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ExtraTimeFee")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NoParkingFee")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VehicleType")
                         .HasColumnType("nvarchar(max)");
