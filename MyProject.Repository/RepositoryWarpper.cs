@@ -1,4 +1,5 @@
-﻿using MyProject.Contracts;
+﻿using Microsoft.Extensions.Configuration;
+using MyProject.Contracts;
 using MyProject.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace MyProject.Repository
     public class RepositoryWarpper : IRepositoryWrapper
     {
         private RepositoryContext _repoContext;
+        private readonly IConfiguration _configuration;
         private IEmployeeRepository _employee;
         private IAppUsersRepository _appUsers;
         private IStallDetailsRepository _stallDetails;
@@ -16,7 +18,10 @@ namespace MyProject.Repository
         private IStallRegistrationRepository _stallRegistration;
         private IStallProductCategoriesRepository _stallProductCategories;
         private IIndentRepository _indentDetails;
-
+        private IProductRepository _productDetails;
+        private IUnitsRepository _units;
+        private IEntryGateDetailsRepository _entryCheckInDetails;
+        private IExitGateRepository _exitGateRepository;
         public IEmployeeRepository Employee
         {
             get
@@ -164,10 +169,87 @@ namespace MyProject.Repository
             }
 
         }
+        public IProductRepository Product
+        {
+            get
+            {
+                if (_productDetails == null)
+                {
+                    _productDetails = new ProductRepository(_repoContext);
+                }
+                return _productDetails;
+            }
+            set
+            {
+                if (_productDetails == null)
+                {
+                    _productDetails = new ProductRepository(_repoContext);
+                };
+            }
+
+        }
+        public IUnitsRepository Units
+        {
+            get
+            {
+                if (_units == null)
+                {
+                    _units = new UnitsRepository(_repoContext);
+                }
+                return _units;
+            }
+            set
+            {
+                if (_units == null)
+                {
+                    _units = new UnitsRepository(_repoContext);
+                };
+            }
+
+        }
         public RepositoryWarpper(RepositoryContext repositoryContext)
         {
             _repoContext = repositoryContext;
         }
+
+        public IExitGateRepository ExitGateRepository
+        {
+            get
+            {
+                if (_exitGateRepository == null)
+                {
+                    _exitGateRepository = new ExitGateRepository(_repoContext);
+                }
+                return _exitGateRepository;
+            }
+            set
+            {
+                if (_exitGateRepository == null)
+                {
+                    _exitGateRepository = new ExitGateRepository(_repoContext);
+                };
+            }
+        }
+        public IEntryGateDetailsRepository EntryCheckInDetails
+        {
+            get
+            {
+                if (_entryCheckInDetails == null)
+                {
+                    _entryCheckInDetails = new EntryGateDetailsRepository(_repoContext);
+                }
+                return _entryCheckInDetails;
+            }
+            set
+            {
+                if (_entryCheckInDetails == null)
+                {
+                    _entryCheckInDetails = new EntryGateDetailsRepository(_repoContext);
+                };
+            }
+
+        }
+        
         public void Save()
         {
             _repoContext.SaveChanges();

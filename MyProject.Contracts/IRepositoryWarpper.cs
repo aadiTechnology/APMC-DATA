@@ -17,6 +17,11 @@ namespace MyProject.Contracts
         IStallRegistrationRepository StallRegistration { get; set; }
         IStallProductCategoriesRepository StallProductCategories { get; set; }
         IIndentRepository IndentDetails { get; set; }
+        IProductRepository Product { get; set; }
+        IUnitsRepository Units { get; set; }
+        IEntryGateDetailsRepository EntryCheckInDetails { get; set; }
+
+        IExitGateRepository ExitGateRepository { get; set; }
         void Save();
     }
 }
